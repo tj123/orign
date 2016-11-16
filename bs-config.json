@@ -1,0 +1,6 @@
+{
+  "port":8889,
+  "server":{
+    "baseDir":"./app"
+  }
+}

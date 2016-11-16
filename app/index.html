@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body ng-controller="AppCtrl">
+
+    <!--[if lte IE 8]>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="hide"><span aria-hidden="true">&times;</span></button>
+        <strong>提示!</strong>&nbsp;&nbsp;为了获得更好的浏览体验，请升级到最新版的 Chrome/Firefox/Safari/Opera/Edge/IE 浏览器
+    </div>
+    <![endif]-->
+
+    <div class="app" ui-view></div>
+
+    <!-- 第一次加载库 -->
+    <script src="js/lib/jquery/jquery.min.js"></script>
+    <script src="js/lib/angular/angular.js"></script>
+    <script src="js/lib/angular/angular-ui-router.js"></script>
+    <script src="js/lib/angular/angular-animate.js"></script>
+    <script src="js/lib/angular/angular-cookies.js"></script>
+    <script src="js/lib/angular/angular-resource.js"></script>
+    <script src="js/lib/angular/angular-sanitize.js"></script>
+    <script src="js/lib/angular/angular-touch.js"></script>
+    <script src="js/lib/angular/ui-bootstrap-tpls.js"></script>
+    <script src="js/lib/angular/ngStorage.js"></script>
+    <script src="js/lib/angular/ocLazyLoad.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
+
+    <!-- app相关 -->
+    <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
+
+    <!-- 指令 -->
+    <script src="js/drt/setnganimate.js"></script>
+    <script src="js/drt/ui-butterbar.js"></script>
+    <script src="js/drt/ui-focus.js"></script>
+    <script src="js/drt/ui-fullscreen.js"></script>
+    <script src="js/drt/ui-jq.js"></script>
+    <script src="js/drt/ui-module.js"></script>
+    <script src="js/drt/ui-nav.js"></script>
+    <script src="js/drt/ui-scroll.js"></script>
+    <script src="js/drt/ui-shift.js"></script>
+    <script src="js/drt/ui-toggleclass.js"></script>
+    <script src="js/drt/ui-validate.js"></script>
+
+    <script src="js/svrs/ui-load.js"></script>
+
+</body>
+</html>
