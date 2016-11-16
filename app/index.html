@@ -20,7 +20,7 @@
     </div>
     <![endif]-->
 
-    <div class="app" ui-view></div>
+    <div class="app" ng-class="{ 'app-menu-folded' : app.settings.menuFolded }"  ui-view></div>
 
     <!-- 第一次加载库 -->
     <script src="js/lib/jquery/jquery.min.js"></script>
@@ -53,6 +53,7 @@
     <script src="js/drt/ui-toggleclass.js"></script>
     <script src="js/drt/ui-validate.js"></script>
 
+    <!-- Services -->
     <script src="js/svrs/ui-load.js"></script>
 
 </body>

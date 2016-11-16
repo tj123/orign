@@ -49,11 +49,11 @@ app.controller('AppCtrl', ['$scope', '$localStorage', '$window',
                 themeID: 1,
                 navbarHeaderColor: 'bg-black',
                 navbarCollapseColor: 'bg-white-only',
-                asideColor: 'bg-black',
+                menuColor: 'bg-black',
                 headerFixed: true,
-                asideFixed: false,
-                asideFolded: false,
-                asideDock: false,
+                menuFixed: false,
+                menuFolded: true,
+                menuDock: false,
                 container: false
             }
         }
@@ -65,7 +65,7 @@ app.controller('AppCtrl', ['$scope', '$localStorage', '$window',
             $localStorage.settings = $scope.app.settings;
         }
         $scope.$watch('app.settings', function () {
-            if ($scope.app.settings.asideDock && $scope.app.settings.asideFixed) {
+            if ($scope.app.settings.menuDock && $scope.app.settings.menuFixed) {
                 // aside dock and fixed must set the header fixed.
                 $scope.app.settings.headerFixed = true;
             }

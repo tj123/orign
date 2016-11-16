@@ -2,9 +2,15 @@
 <div class="app-header" ng-include="'tpl/block/header.html'"></div>
 
 <!-- 菜单 -->
-<div class="app-menu" ng-include="'tpl/block/menu.html'"></div>
+<div ui-nav class="app-menu" ng-include="'tpl/block/menu.html'"></div>
 
-
+<!-- 主体内容 -->
+<div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle" ui-toggle-class="off-screen" data-target=".app-menu">这是阿萨德发生的阿斯达</a>
+    <div class="app-content-body fade-in-up" ui-view></div>
+</div>
+<!-- /content -->
 
 <!-- footer -->
 <div class="app-footer wrapper b-t bg-light">
