@@ -5,7 +5,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
         $stateProvide
             .state('app', {
                 url: '/app',
-                templateUrl: 'app.html'
+                templateUrl: 'app.html',
+                resolve:{
+                    deps:['$ocLazyLoad',function(ld){
+                        return ld.load(['css/app.css']);
+                    }]
+                }
             })
             .state('app.dash', {
                 url: '/dash',
@@ -40,5 +45,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/setup',
                 templateUrl: 'tpl/sys_setup.html'
             })
+            .state('test',{
+                url:'/test',
+                templateUrl:'test.html',
+                resolve:{
+                    deps:['$ocLazyLoad',function(ld){
+                        return ld.load(['css/test.css']);
+                    }]
+                }
+            })
+
+
     }]);
 

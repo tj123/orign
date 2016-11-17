@@ -3,7 +3,7 @@
 @mixin clearfix {
   &:before,
   &:after {
-    content: " ";
+    content: "";
     display: table;
   }
   &:after {
@@ -11,3 +11,137 @@
   }
 }
 
+$bg-color-base: #555;
+
+@mixin color-variant($bg-color:$bg-color-base,$lt-percent:10%,$lter-percent:15%,$dk-percent:10%,$dker-percent:15%) {
+  background: $bg-color;
+  &.lt,
+  .lt {
+    background-color: lighten($bg-color, $lt-percent);
+  }
+  &.lter {
+    background-color: lighten($bg-color, $lter-percent);
+  }
+  &.dk,
+  .dk {
+    background-color: darken($bg-color, $dk-percent);
+  }
+  &.dker,
+  .dker {
+    background-color: darken($bg-color, $dker-percent);
+  }
+}
+
+@mixin font-variant($bg-color) {
+  $font-color: desaturate(lighten($bg-color, 40%), 10%);
+  $link-color: desaturate(lighten($bg-color, 50%), 10%);
+  $hover-color: #fff;
+  color: $font-color;
+  a {
+    color: $link-color;
+    &:hover {
+      color: $hover-color;
+    }
+    &.list-group-item {
+      &:hover,
+      &:focus {
+        background-color: inherit;
+      }
+    }
+  }
+  .nav {
+    > li {
+      &:hover,
+      &:focus,
+      &.active {
+        > a {
+          color: $hover-color;
+          background-color: darken($bg-color, 5%);
+        }
+      }
+      > a {
+        color: darken($link-color, 5%);
+        &:hover,
+        &:focus {
+          background-color: darken($bg-color, 2.5%);
+        }
+      }
+    }
+    .open > a {
+      background-color: darken($bg-color, 2.5%);
+    }
+  }
+  .caret {
+    border-top-color: $font-color;
+    border-bottom-color: $font-color;
+  }
+  &.navbar .nav {
+    > li.active > a {
+      color: $hover-color;
+      background-color: darken($bg-color, 2.5%);
+    }
+  }
+  .open > a {
+    &,
+    &:hover,
+    &:focus {
+      color: $hover-color;
+    }
+  }
+  .text-muted {
+    color: darken($font-color, 10%) !important;
+  }
+  .text-lt {
+    color: lighten($font-color, 25%) !important;
+  }
+  &.auto,
+  .auto {
+    .list-group-item {
+      border-color: darken($bg-color, 5%) !important;
+      background-color: transparent;
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        background-color: darken($bg-color, 2.5%) !important;
+      }
+    }
+  }
+}
+
+@mixin text-variant($bg-color, $name) {
+  a.bg-#{$name}:hover {
+    background-color: darken($bg-color, 5%);
+  }
+  a.text-#{$name}:hover {
+    color: darken($bg-color, 5%);
+  }
+  .text-#{$name} {
+    color: $bg-color;
+  }
+  .text-#{$name}-lt {
+    color: lighten($bg-color, 5%);
+  }
+  .text-#{$name}-lter {
+    color: lighten($bg-color, 10%);
+  }
+  .text-#{$name}-dk {
+    color: darken($bg-color, 5%);
+  }
+  .text-#{$name}-dker {
+    color: darken($bg-color, 10%);
+  }
+}
+
+/// Mixin printing a linear-gradient
+///       线性渐变
+/// and the `-webkit-` prefixed declaration
+/// https://www.sitepoint.com/building-linear-gradient-mixin-sass/
+/// @access public
+/// @param {Keyword | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
