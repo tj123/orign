@@ -96,4 +96,15 @@ app.controller('AppCtrl', ['$scope', '$localStorage', '$window',
     function ($rootScope, $state, $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
+        $rootScope.$on('$stateChangeStart',
+            function(e, toState, toParams, fromState, fromParams){
+                console.log();
+                console.log(e.currentScope);
+                // if(e.currentScope != null){
+                //     e.currentScope.animate = 'fadeInOut';
+                //     e.preventDefault();
+                // }
+
+            });
     }]);

@@ -1,7 +1,7 @@
 <ul class="nav">
 
     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-        <span translate="aside.nav.HEADER">Navigation</span>
+        <span>Navigation</span>
     </li>
 
     <li>
@@ -11,71 +11,39 @@
             <i class="fa fa-fw fa-angle-down text-active"></i>
           </span>
             <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-            <span class="font-bold">Dashboard</span>
+            <span class="font-bold">系统管理</span>
         </a>
         <ul class="nav nav-sub dk">
             <li class="nav-sub-header">
                 <a href>
-                    <span translate="aside.nav.DASHBOARD">Dashboard</span>
+                    <span >Dashboard</span>
                 </a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="app.dash">
-                    <span>Dashboard v1</span>
+                <a ui-sref="app.menu">
+                    <span>菜单管理</span>
                 </a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="app.dashboard-v2">
+                <a ui-sref="app.dep">
                     <b class="label bg-info pull-right">N</b>
-                    <span>Dashboard v2</span>
+                    <span>部门管理</span>
                 </a>
             </li>
         </ul>
     </li>
     <li ui-sref-active="active">
-        <a ui-sref="app.calendar">
+        <a ui-sref="app.user">
             <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-            <span class="font-bold" translate="aside.nav.CALENDAR">Calendar</span>
+            <span class="font-bold">用户管理</span>
         </a>
     </li>
     <li ui-sref-active="active">
-        <a ui-sref="app.mail.list">
+        <a ui-sref="app.role">
             <b class="badge bg-info pull-right">9</b>
             <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-            <span class="font-bold" translate="aside.nav.EMAIL">Email</span>
+            <span class="font-bold">角色管理</span>
         </a>
-    </li>
-    <li>
-        <a href class="auto">
-          <span class="pull-right text-muted">
-            <i class="fa fa-fw fa-angle-right text"></i>
-            <i class="fa fa-fw fa-angle-down text-active"></i>
-          </span>
-            <i class="glyphicon glyphicon-th-large icon text-success"></i>
-            <span class="font-bold">Apps</span>
-        </a>
-        <ul class="nav nav-sub dk">
-            <li class="nav-sub-header">
-                <a href>
-                    <span>Apps</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="apps.note">
-                    <span>Note</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="apps.contact">
-                    <span>Contacts</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.weather">
-                    <span>Weather</span>
-                </a>
-            </li>
-        </ul>
     </li>
 
 

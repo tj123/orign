@@ -5,5 +5,5 @@ tmp
 .idea/
 bower_components/
 npm-debug.log
-app/img/
-app/js/ctrl/
+.sass-cache/
+
