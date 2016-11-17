@@ -21,26 +21,29 @@ $app-menu-dock-media:             992px;
 //xs
 .app-menu{
   background-color: red;
-  height: 200px;
+  width: 100px;
 }
 
 //sm
 @media(min-width: 768px){
   .app-menu{
-    width:$app-menu-width;
+    background: #000;
+    width:200px;
   }
 }
 
 //md
 @media(min-width: 992px){
   .app-menu{
-    width: 100px;
+    width: 300px;
+    background: #ccc;
   }
 }
 
 //lg
 @media(min-width: 1200px){
   .app-menu{
-    width: 200px;
+    width: 400px;
+    background: #DDDDDD;
   }
 }

@@ -1,7 +1,7 @@
 
 app.config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvide, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/app');
+        $urlRouterProvider.otherwise('/t2');
         $stateProvide
             .state('app', {
                 url: '/app',
@@ -51,6 +51,15 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 resolve:{
                     deps:['$ocLazyLoad',function(ld){
                         return ld.load(['css/test.css']);
+                    }]
+                }
+            })
+            .state('test2',{
+                url:'/t2',
+                templateUrl:'test2.html',
+                resolve:{
+                    deps:['$ocLazyLoad',function(ld){
+                        return ld.load(['css/test2.css']);
                     }]
                 }
             })

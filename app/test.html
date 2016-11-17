@@ -1,5 +1,49 @@
-<h1>这是一个测试页面的啊</h1>
+<div class="menu">
+    <ul class="nav">
 
-<div class="app-menu">
-asdfasdfasdfasdf
+        <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+            <span>Navigation</span>
+        </li>
+
+        <li>
+            <a href class="auto">
+              <span class="pull-right">
+                <i class="fa fa-fw fa-angle-right text"></i>
+              </span>
+                <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+                <span class="font-bold">系统管理</span>
+            </a>
+            <ul class="nav nav-sub dk">
+                <li class="nav-sub-header">
+                    <a href>
+                        <span >Dashboard</span>
+                    </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.menu">
+                        <span>菜单管理</span>
+                    </a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="app.dep">
+                        <b class="label bg-info pull-right">N</b>
+                        <span>部门管理</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="app.user">
+                <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+                <span class="font-bold">用户管理</span>
+            </a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="app.role">
+                <b class="badge bg-info pull-right">9</b>
+                <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
+                <span class="font-bold">角色管理</span>
+            </a>
+        </li>
+    </ul>
 </div>
