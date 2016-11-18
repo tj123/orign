@@ -1,0 +1,27 @@
+<div class="app">
+
+    <!-- 导航菜单 -->
+    <div class="header-menu" ng-include="'tpl/t3/header-menu.html'"></div>
+
+    <!-- 顶部导航 -->
+    <nav class="header navbar navbar-default" ng-include="'tpl/t3/header.html'"></nav>
+
+    <!-- 菜单 -->
+    <div ng-include="'tpl/t3/menu.html'"></div>
+
+    <!-- 主体内容 -->
+    <div class="content">
+        <div class="content-load-bar">
+
+        </div>
+        <div ui-view class="content-wrap">
+
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="fotter">
+
+    </div>
+
+</div>
