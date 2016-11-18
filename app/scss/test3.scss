@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
+@import "app.variable";
 @import "app.mis";
 @import "app.mixin";
+@import "test3.menu";
 
 $menu-width:                200px;
 $menu-xs-show-percent:    80%;
@@ -11,6 +13,123 @@ $menu-folded-width:       60px;
 
 $header-height:           50px;
 $z-index-top:             99999;
+
+
+html {
+  background-color: #f0f3f4;
+}
+
+body {
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.42857143;
+  color: #58666e;
+  background-color: transparent;
+}
+
+*:focus {
+  outline: 0 !important;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
+}
+
+a {
+  color: #363f44;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover,
+a:focus {
+  color: #141719;
+  text-decoration: none;
+}
+
+label {
+  font-weight: normal;
+}
+
+small,
+.small {
+  font-size: 13px;
+}
+
+.badge,
+.label {
+  font-weight: bold;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.badge.bg-light,
+.label.bg-light {
+  text-shadow: none;
+}
+
+.badge {
+  background-color: #cfdadd;
+}
+
+.badge.up {
+  position: relative;
+  top: -10px;
+  padding: 3px 6px;
+  margin-left: -10px;
+}
+
+.badge-sm {
+  padding: 2px 5px !important;
+  font-size: 85%;
+}
+
+.label-sm {
+  padding-top: 0;
+  padding-bottom: 1px;
+}
+
+.badge-white {
+  padding: 2px 6px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.badge-empty {
+  color: inherit;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+blockquote {
+  border-color: #dee5e7;
+}
+
+.caret-white {
+  border-top-color: #fff;
+  border-top-color: rgba(255, 255, 255, 0.65);
+}
+
+a:hover .caret-white {
+  border-top-color: #fff;
+}
+
+
+html, body{
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  overflow-x: hidden;
+}
+
+
 
 
 @mixin slide-animate{
