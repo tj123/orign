@@ -8,6 +8,27 @@
  * Copyright (c) 2016 Daniel Eden
  */
 
+.animated-x3 {
+  -webkit-animation-duration: .1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated-x2 {
+  -webkit-animation-duration: .25s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated-x1 {
+  -webkit-animation-duration: .5s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
