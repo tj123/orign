@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-*{
-  margin: 0;
-  padding: 0;
-}
-
 @mixin transform($transform...){
   -ms-transform:$transform; 	/// /* IE 9 */
   -moz-transform:$transform; 	/// /* Firefox */
@@ -15,14 +10,14 @@
 
 $nav-rotate-location-percent:0.37;
 $nav-rotate-deg:21.5deg;
-$nav-width-percent:0.7;
-$nav-height-percent:0.75;
+$nav-width-percent:0.5;
+$nav-height-percent:0.68;
 
-$nav-icon-size:30px;
+$nav-icon-size:60px;
 $nav-width-cross:25px;
 $nav-cross-deg:36deg;
 $nav-icon-width:round($nav-icon-size * $nav-width-percent);
-$nav-icon-height:round($nav-icon-size / 15);
+$nav-icon-height:round($nav-icon-size / 25);
 $nav-icon-left:round($nav-icon-size * (1-$nav-width-percent) ) / 2 - 1;
 $nav-icon-top-location:round($nav-icon-size * (1 - $nav-height-percent)) -$nav-icon-height/2;
 $nav-icon-middle-location:round($nav-icon-size * 0.5) -$nav-icon-height/2;
@@ -47,11 +42,10 @@ $nav-icon-bottom-location:round($nav-icon-size * $nav-height-percent) -$nav-icon
 }
 
 .nav-icon{
-  //position: absolute;
+  position: absolute;
   //width:;
   width: $nav-icon-size;
   height: $nav-icon-size;
-  background-color: #ccc;
   .nav-top,.nav-middle,.nav-bottom{
     position: absolute;
     width: $nav-icon-width;

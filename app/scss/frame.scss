@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+
+@import "frame.variable";
+@import "app.navicon";
+@import "frame.color";
+
+
+
+
+
+/// xs
+
+
+.menu{
+  position: fixed;
+  top:$header-height;
+  bottom:0;
+  left:0;
+  background-color: $base-bg;
+  width:$mobile-menu-percent;
+  margin-left:-$mobile-menu-percent;
+  @include transition(margin-left ease-in-out $menu-show-time);
+}
+
+.header{
+  height:$header-height;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: $base-bg;
+  line-height: $header-height;
+  .nav-icon{
+    &:hover{
+      cursor: pointer;
+      background-color: $base-hover-bg;
+    }
+  }
+}
+
+.header-menu{
+  position: fixed;
+  top:0;
+  left:0;
+  height:$header-height;
+  width:$mobile-menu-percent;
+  background-color: $base-bg;
+  margin-left:-$mobile-menu-percent;
+  @include transition(margin-left ease-in-out $menu-show-time);
+}
+
+.content{
+
+}
+
+.mobile-mask{
+  display: none;
+}
+
+.menu-show{
+  .menu{
+    margin-left:0;
+  }
+  .header-menu{
+    margin-left:0;
+  }
+  .header{
+    margin-left:$mobile-menu-percent;
+  }
+  .mobile-mask{
+    position: fixed;
+    top:$header-height;
+    right: 0;
+    bottom: 0;
+    width: 100%-$mobile-menu-percent;
+    background-color: $mobile-mask-color;
+    display: block;
+  }
+}
+
+
+
+
+/// sm
+@media (min-width: 768px) {
+
+
+  .menu{
+    position: absolute;
+    margin-left: 0;
+    width:$menu-width;
+
+  }
+
+  .header{
+    position: absolute;
+    left:$menu-width;
+  }
+
+  .header-menu{
+    position: absolute;
+    margin-left: 0;
+    width:$menu-width;
+  }
+
+  .content{
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+}
