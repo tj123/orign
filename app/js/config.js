@@ -89,6 +89,13 @@ app.config(['$stateProvider', '$urlRouterProvider',
             }]
           }
         })
-
+        .state('frame.dep',{
+          url:'/dep',
+          templateUrl:'tpl/sys_dep.html'
+        })
+        .state('frame.dep2',{
+          url:'/dep2',
+          templateUrl:'tpl/sys_dep2.html'
+        })
   }]);
 

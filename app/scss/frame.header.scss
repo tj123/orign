@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+@import "frame.variable";
+@import "app.mixin";
+
+
+.header{
+
+  a{
+    margin-top:5px;
+  }
+
+  .m-l-sm{
+    margin-left:-15px;
+  }
+
+  .navbar-toggle{
+    margin-right:42px;
+    .nav-expand{
+      margin-top:-10px;
+      &:hover{
+        background-color: $base-hover-bg;
+      }
+    }
+
+  }
+
+  .navbar-collapse{
+    &.in{
+      background-color: #fff;
+      @include box-shadow($box-shadow-base);
+      -webkit-animation-name: fadeInDown;
+      animation-name: fadeInDown;
+    }
+
+  }
+
+
+}
+
+@media (min-width: 768px) {
+
+  .header{
+
+    .nav-icon{
+      margin-left: -20px;
+    }
+
+    .m-l-sm{
+      margin-left:10px;
+    }
+
+    .navbar-collapse{
+      -webkit-animation-name: none;
+      animation-name: none;
+    }
+
+  }
+
+
+
+}

@@ -4,6 +4,8 @@
 @import "frame.variable";
 @import "app.navicon";
 @import "frame.color";
+@import "app.mis";
+@import "frame.header";
 
 
 
@@ -51,7 +53,7 @@
 }
 
 .content{
-
+  margin-top:$header-height;
 }
 
 .mobile-mask{
@@ -80,7 +82,9 @@
 }
 
 
-
+.nav-icon-switch{
+  display: none;
+}
 
 /// sm
 @media (min-width: 768px) {
@@ -106,8 +110,24 @@
 
   .content{
 
+    margin-left: $menu-width;
 
 
+  }
+
+  .menu-folded{
+
+    .menu{
+      width:$menu-folded-width;
+    }
+
+    .header-menu{
+      width: $menu-folded-width;
+    }
+
+    .header{
+      left: $menu-folded-width;
+    }
 
   }
 
@@ -116,6 +136,36 @@
 
 
 
+}
+
+@media (min-width: 992px){
+
+  .menu-docked{
+    .menu{
+      height:$menu-docked-height;
+      width: 100%;
+    }
+
+    .header{
+      left: 0;
+      .nav-icon{
+        display: none;
+      }
+      .nav-icon-switch{
+        display: block;
+      }
+    }
+
+    .header-menu{
+      display: none;
+    }
+
+    .content{
+      margin-top:$menu-docked-height + $header-height;
+      margin-left:0;
+    }
+
+  }
 
 
 }
