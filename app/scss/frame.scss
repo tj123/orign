@@ -11,6 +11,7 @@
 
 
 
+
 /// xs
 
 
@@ -19,10 +20,10 @@
   top:$header-height;
   bottom:0;
   left:0;
-  background-color: $base-bg;
-  width:$mobile-menu-percent;
-  margin-left:-$mobile-menu-percent;
+  //width:$mobile-menu-percent;
+  margin-left:-100%;
   @include transition(margin-left ease-in-out $menu-show-time);
+  z-index: $z-index-max;
 }
 
 .header{
@@ -31,8 +32,8 @@
   top: 0;
   right: 0;
   left: 0;
-  background-color: $base-bg;
   line-height: $header-height;
+  z-index: $z-index-max;
   .nav-icon{
     &:hover{
       cursor: pointer;
@@ -46,38 +47,49 @@
   top:0;
   left:0;
   height:$header-height;
-  width:$mobile-menu-percent;
   background-color: $base-bg;
-  margin-left:-$mobile-menu-percent;
+  margin-left:-100%;
+  z-index: $z-index-max;
   @include transition(margin-left ease-in-out $menu-show-time);
 }
 
 .content{
   margin-top:$header-height;
+  z-index: $z-index-bottom;
 }
 
 .mobile-mask{
   display: none;
+  z-index: $z-index-max;
 }
 
 .menu-show{
   .menu{
     margin-left:0;
+    right:$menu-show-mask-width;
   }
   .header-menu{
     margin-left:0;
+    right:$menu-show-mask-width;
   }
   .header{
-    margin-left:$mobile-menu-percent;
+    left:inherit;
+    width: $menu-show-mask-width;
+    .navbar-toggle{
+      display: none;
+    }
   }
   .mobile-mask{
     position: fixed;
     top:$header-height;
     right: 0;
     bottom: 0;
-    width: 100%-$mobile-menu-percent;
+    width: $menu-show-mask-width;
     background-color: $mobile-mask-color;
     display: block;
+  }
+  .content{
+    overflow: hidden;
   }
 }
 
@@ -122,11 +134,15 @@
     }
 
     .header-menu{
-      width: $menu-folded-width;
+      margin-left:-$menu-width;
     }
 
     .header{
-      left: $menu-folded-width;
+      left: 0;
+    }
+
+    .content{
+      margin-left:$menu-folded-width;
     }
 
   }
@@ -169,3 +185,6 @@
 
 
 }
+
+
+@import "frame.theme.basic";

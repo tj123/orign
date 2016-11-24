@@ -5,9 +5,8 @@
 
 
 .header{
-
   a{
-    margin-top:5px;
+    ///margin-top:5px;
   }
 
   .m-l-sm{
@@ -17,7 +16,7 @@
   .navbar-toggle{
     margin-right:42px;
     .nav-expand{
-      margin-top:-10px;
+      margin-top:-18px;
       &:hover{
         background-color: $base-hover-bg;
       }
@@ -26,6 +25,7 @@
   }
 
   .navbar-collapse{
+    z-index: $z-index-middle;
     &.in{
       background-color: #fff;
       @include box-shadow($box-shadow-base);

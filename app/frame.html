@@ -1,8 +1,8 @@
-<div class="app" ng-class="{
-  'menu-folded':app.setting.menu.folded,
-  'menu-fixed':app.setting.menu.fixed,
-  'menu-show':app.setting.menu.show,
-  'menu-docked':app.setting.menu.docked
+<div class="app theme-basic" ng-class="{
+  'menu-folded':setting.menu.folded,
+  'menu-fixed':setting.menu.fixed,
+  'menu-show':setting.menu.show,
+  'menu-docked':setting.menu.docked
 }">
 
   <nav class="header">
@@ -15,15 +15,15 @@
           <!--<span class="icon-bar"></span>-->
           <!--<span class="icon-bar"></span>-->
         <!--</button>-->
-        <a class="navbar-toggle" ng-click="app.setting.header.expand.toggle()">
-          <div class="nav-expand" ng-class="{'nav-expand-up':app.setting.header.expand.up}">
+        <a class="navbar-toggle" ng-click="header.expand.toggle()">
+          <div class="nav-expand" ng-class="{'nav-expand-up':setting.header.expand.up}">
             <div class="nav-expand-top"></div>
             <div class="nav-expand-bottom"></div>
           </div>
         </a>
 
-        <a ng-click="app.setting.header.nav.toggle()" class="navbar-brand no-padder">
-          <div class="nav-icon" ng-class="{'nav-icon-close':app.setting.header.nav.close,'nav-icon-left':app.setting.header.nav.left,'nav-icon-right':app.setting.header.nav.right}">
+        <a ng-click="header.nav.toggle()" class="navbar-brand no-padder">
+          <div class="nav-icon" ng-class="{'nav-icon-close':setting.header.nav.close,'nav-icon-left':setting.header.nav.left,'nav-icon-right':setting.header.nav.right}">
             <div class="nav-top"></div>
             <div class="nav-middle"></div>
             <div class="nav-bottom"></div>
@@ -33,7 +33,7 @@
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="animated collapse navbar-collapse" ng-class="{'in':app.setting.header.expand.up}">
+      <div class="animated collapse navbar-collapse" ng-class="{'in':setting.header.expand.up}">
         <ul class="m-l-sm nav navbar-nav">
           <li class="active"><a href="javascript:;">Link <span class="sr-only">(current)</span></a></li>
           <li><a href="javascript:;">Link</a></li>
@@ -87,7 +87,7 @@
     <div ui-view></div>
   </div>
 
-  <div class="mobile-mask">
+  <div class="mobile-mask" ng-click="menu.mask.hide()">
 
   </div>
 

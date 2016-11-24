@@ -1,4 +1,4 @@
-;(function($,window){
+;(function (window) {
 
   var app = window.app = angular.module('app', [
     'ngAnimate',
@@ -25,73 +25,12 @@
       app.CONTEXT = 'localhost:8080/';
     }]);
 
-  app.controller('AppCtrl', ['$scope', '$localStorage', '$window','$timeout',
-    function ($scope, $localStorage, $window,$timeout) {
+  app.controller('AppCtrl', ['$scope', '$localStorage', '$window', '$timeout',
+    function ($scope, $localStorage, $window, $timeout) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
-
-      // config
-      var sApp = $scope.app = {
-        name: 'origin',
-        version: '1.0.0',
-        // for chart colors
-        color: {
-          primary: '#7266ba',
-          info: '#23b7e5',
-          success: '#27c24c',
-          warning: '#fad733',
-          danger: '#f05050',
-          light: '#e8eff0',
-          dark: '#3a3f51',
-          black: '#1c2b36'
-        },
-        settings: {
-          themeID: 1,
-          navbarHeaderColor: 'bg-black',
-          navbarCollapseColor: 'bg-white-only',
-          menuColor: 'bg-black',
-          headerFixed: true,
-          menuFixed: false,
-          menuFolded: true,
-          menuDock: false,
-          container: false
-        },
-        setting:{
-          menu:{},
-          header:{},
-          content:{},
-          headerMenu:{}
-        }
-      }
-
-      // save settings to local storage
-      if (angular.isDefined($localStorage.settings)) {
-        $scope.app.settings = $localStorage.settings;
-      } else {
-        $localStorage.settings = $scope.app.settings;
-      }
-      $scope.$watch('app.settings', function () {
-        if ($scope.app.settings.menuDock && $scope.app.settings.menuFixed) {
-          // aside dock and fixed must set the header fixed.
-          $scope.app.settings.headerFixed = true;
-        }
-        // save to local storage
-        $localStorage.settings = $scope.app.settings;
-      }, true);
-
-      // angular translate
-      //$scope.lang = {isopen: false};
-      //$scope.langs = {en: 'English', de_DE: 'German', it_IT: 'Italian'};
-      //$scope.selectLang = $scope.langs[$translate.proposedLanguage()] || "English";
-      //$scope.setLang = function (langKey, $event) {
-      // set the current lang
-      // $scope.selectLang = $scope.langs[langKey];
-      // You can change the language during runtime
-      // $translate.use(langKey);
-      //   $scope.lang.isopen = !$scope.lang.isopen;
-      // };
 
       function isSmartDevice($window) {
         // Adapted from http://www.detectmobilebrowsers.com
@@ -100,135 +39,200 @@
         return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
 
-      var screen = function(w){
+      /**
+      *屏幕的处理
+       */
+      var screen = function (w) {
+        w = w || angular.element($window).width();
         return new screen.fn.init(w);
-      }
+      };
 
       screen.prototype = screen.fn = {
-        constructor:screen,
-        init:function (w) {
+        constructor: screen,
+        init: function (w) {
           this.w = w;
         },
-        isXs:function () {
+        isXs: function () {
           return this.w < 768;
         },
-        isSm:function () {
+        isSm: function () {
           return this.w > 768 && this.w < 992;
         },
-        isMd:function (w) {
+        isMd: function (w) {
           return this.w > 992 && this.w < 1200;
         },
-        isLg:function (w) {
+        isLg: function (w) {
           return this.w > 1200;
         }
       };
 
       screen.fn.init.prototype = screen.fn;
 
-      //顶部导航
-      var header = sApp.setting.header = {
-        fixed:true //xs 默认固定
-      };
-
-      var headerMenu = sApp.setting.headerMenu = {
-        fixed:true, //xs 默认固定
-        show:false // xs 默认不显示
-      };
-
-      //导航图标
-      var nav = header.nav = {
-        close:false,
-        menu:true,
-        left:false,
-        right:false,
-        to:function (val) {
-          for(var i in this){
-            if(angular.isFunction(this[i]))continue;
-            if(val == i){
-              this[i] = true;
-            }else {
-              this[i] = false;
+      var setting = $scope.setting = {
+            //顶部导航
+            header: {
+              fixed: true, //xs 默认固定
+              nav: {
+                close: false,
+                menu: true,
+                left: false,
+                right: false,
+              },
+              expand: {
+                up: false
+              }
+            },
+            headerMenu: {
+              fixed: true, //xs 默认固定
+              show: false // xs 默认不显示
+            },
+            //菜单
+            menu: {
+              folded: false,
+              show: false,//xs 默认不显示
+              fixed: true,// xs 默认固定 其余默认不固定
+              docked: false
+            },
+          },
+          header = $scope.header = {
+            nav: {
+              //切换导航样式
+              to: function (val) {
+                var n = setting.header.nav;
+                for (var i in n) {
+                  if (val == i) {
+                    n[i] = true;
+                  } else {
+                    n[i] = false;
+                  }
+                }
+              },
+              toggle: function () {
+                var scn = screen();
+                if (scn.isXs()) {
+                  menu.toggleShow();
+                } else if (scn.isSm() || scn.isMd() || scn.isLg()) {
+                  menu.toggleFold();
+                }
+              }
+            },
+            expand: {
+              toggle: function () {
+                setting.header.expand.up = !setting.header.expand.up;
+              },
+              up:function () {
+                setting.header.expand.up = true;
+              },
+              down:function () {
+                setting.header.expand.up = false;
+              }
             }
-          }
-        }
-      };
-
-      //导航展开图标
-      var expand = header.expand ={
-        up:false,
-        toggle:function () {
-          console.log('切换了');
-          this.up = !this.up;
-        }
-      };
-
-      //菜单
-      var menu = sApp.setting.menu = {
-        folded:false,
-        show:false,//xs 默认不显示
-        fixed:true,// xs 默认固定 其余默认不固定
-        docked:false
-      };
-
-      //导航图标切换
-      nav.toggle = function () {
-        var scn = screen($($window).width());
-        if(scn.isXs()){
-          if(menu.show){
-            menu.show = false;
-            nav.to('menu');
-          }else {
-            menu.show = true;
-            nav.to('close');
-          }
-        }else if(scn.isSm() || scn.isMd() || scn.isLg()){
-          if(menu.folded){
-            menu.folded = false;
-            nav.to('left');
-          }else{
-            menu.folded = true;
-            nav.to('right');
-          }
-        }
-        console.log(scn.isXs());
-        console.log(scn.isSm());
-        console.log(scn.isMd());
-        console.log(scn.isLg());
-      }
-
+          },
+          //顶部左侧导航
+          _headerMenu = setting.headerMenu,
+          headerMenu = $scope.headerMenu = {
+            fixed: function () {
+              _headerMenu.fixed = true;
+            },
+            mobilizable: function () {
+              _headerMenu.fixed = false;
+            },
+            show: function () {
+              _headerMenu.show = true;
+            },
+            hide: function () {
+              _headerMenu.show = false;
+            }
+          },
+          //菜单
+          _menu = setting.menu,
+          menu = $scope.menu = {
+            show: function () {
+              //xs 的处理
+              header.nav.to('close');
+              _menu.show = true;
+            },
+            toggleShow:function () {
+              var t = this;
+              if(t.isShow()){
+                t.hide();
+              }else{
+                t.show();
+              }
+            },
+            toggleFold:function () {
+              var t = this;
+              if(t.isFolded()){
+                t.expand();
+              }else{
+                t.folded();
+              }
+            },
+            isShow: function () {
+              return _menu.show;
+            },
+            isHide: function () {
+              return !_menu.show;
+            },
+            hide:function () {
+              header.nav.to('menu');
+              _menu.show = false;
+            },
+            isFolded: function () {
+              return _menu.folded;
+            },
+            fold: function () {
+              header.nav.to('right')
+              _menu.folded = true;
+            },
+            folded: function () {
+              this.fold();
+            },
+            expand:function () {
+              header.nav.to('left');
+              _menu.folded = false;
+            },
+            updateNotXs:function () {
+              menu.hide();
+              header.expand.down();
+              if (menu.isFolded()) {
+                header.nav.to('right');
+              } else {
+                header.nav.to('left');
+              }
+            },
+            updateXs:function () {
+              if (menu.isShow()) {
+                header.nav.to('close');
+              } else {
+                header.nav.to('menu');
+              }
+            },
+            mask:{
+              hide:function () {
+               menu.hide();
+              }
+            }
+          };
       /**
        * 屏幕尺寸变化处理
        */
-      var resize = function(){
-        var scn = screen($($window).width());
-        if(scn.isSm()||scn.isMd()||scn.isLg()){
-          menu.show = false;
-          expand.up = false;
-          if(menu.folded){
-            nav.to('right');
-          }else{
-            nav.to('left');
-          }
-        }else if(scn.isXs()){
-          if(menu.show){
-            nav.to('close');
-          }else{
-            nav.to('menu');
-          }
+      var resize = function () {
+        var scn = screen();
+        if (scn.isSm() || scn.isMd() || scn.isLg()) {
+          menu.updateNotXs();
+        } else if (scn.isXs()) {
+          menu.updateXs();
         }
-        console.log(scn.isXs());
-        console.log(scn.isSm());
-        console.log(scn.isMd());
-        console.log(scn.isLg());
       };
       resize.isRun = false;
-      $($window).on('resize',function () {
-          if(resize.isRun)return;
-          resize.isRun = true;
-          $timeout(function(){
-            resize();
-            resize.isRun = false;
-          },800);
+      angular.element($window).on('resize', function () {
+        if (resize.isRun)return;
+        resize.isRun = true;
+        $timeout(function () {
+          resize();
+          resize.isRun = false;
+        }, 800);
       });
       resize();
 
@@ -250,5 +254,5 @@
           });
     }]);
 
-})(jQuery,window);
+})(window);
 

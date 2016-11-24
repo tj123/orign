@@ -1,0 +1,29 @@
+@import "app.mixin";
+@import "frame.variable";
+
+.theme-basic{
+  
+  
+  .header{
+    background-color: #fff;
+    @include box-shadow($box-shadow-base);
+
+  }
+
+  .header-menu{
+    background-color: #1c2b36;
+    @include box-shadow(0 1px 0 rgba(0,0,0,.25));
+  }
+
+  .menu{
+    background-color: #1c2b36;
+  }
+
+  .menu-show{
+    .header{
+      background-color: #1c2b36;
+    }
+  }
+  
+  
+}

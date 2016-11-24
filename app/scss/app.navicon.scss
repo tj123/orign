@@ -14,8 +14,8 @@ $nav-width-percent:0.5;
 $nav-height-percent:0.68;
 
 $nav-icon-size:50px;
-$nav-width-cross:25px;
-$nav-cross-deg:36deg;
+$nav-width-cross:30px;
+$nav-cross-deg:38deg;
 // 50 / 2  * sqrt(2)
 $nav-expand-width: 17.7px;
 $nav-expand-loc:$nav-icon-size/2;
@@ -104,7 +104,7 @@ $nav-icon-bottom-location:round($nav-icon-size * $nav-height-percent) -$nav-icon
       width:$nav-width-cross;
     }
     .nav-middle{
-      //opacity: 0;
+      opacity: 0;
     }
     .nav-bottom{
       @include rotate(-$nav-cross-deg);
