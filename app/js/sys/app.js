@@ -1,4 +1,4 @@
-;(function (window) {
+;(function (window, angular,$,undefined) {
 
   var app = window.app = angular.module('app', [
     'ngAnimate',
@@ -40,7 +40,7 @@
       }
 
       /**
-      *屏幕的处理
+       *屏幕的处理
        */
       var screen = function (w) {
         w = w || angular.element($window).width();
@@ -58,47 +58,47 @@
         isSm: function () {
           return this.w > 768 && this.w < 992;
         },
-        isMd: function (w) {
+        isMd: function () {
           return this.w > 992 && this.w < 1200;
         },
-        isLg: function (w) {
+        isLg: function () {
           return this.w > 1200;
         }
       };
 
       screen.fn.init.prototype = screen.fn;
 
-      var setting = $scope.setting = {
-            //顶部导航
-            header: {
-              fixed: true, //xs 默认固定
-              nav: {
-                close: false,
-                menu: true,
-                left: false,
-                right: false,
-              },
-              expand: {
-                up: false
-              }
+      var setting = $scope.setting = {},
+          //顶部导航
+          _header = setting.header = {
+            fixed: true, //xs 默认固定
+            nav: {
+              close: false,
+              menu: true,
+              left: false,
+              right: false,
             },
-            headerMenu: {
-              fixed: true, //xs 默认固定
-              show: false // xs 默认不显示
-            },
-            //菜单
-            menu: {
-              folded: false,
-              show: false,//xs 默认不显示
-              fixed: true,// xs 默认固定 其余默认不固定
-              docked: false
-            },
+            expand: {
+              up: false
+            }
           },
+          _headerMenu = setting.headerMenu = {
+            fixed: true, //xs 默认固定
+            show: false // xs 默认不显示
+          },
+          //菜单
+          _menu = setting.menu = {
+            folded: false,
+            show: false,//xs 默认不显示
+            fixed: true,// xs 默认固定 其余默认不固定
+            docked: false
+          },
+          //},
           header = $scope.header = {
             nav: {
               //切换导航样式
               to: function (val) {
-                var n = setting.header.nav;
+                var n = _header.nav;
                 for (var i in n) {
                   if (val == i) {
                     n[i] = true;
@@ -118,18 +118,17 @@
             },
             expand: {
               toggle: function () {
-                setting.header.expand.up = !setting.header.expand.up;
+                _header.expand.up = !_header.expand.up;
               },
-              up:function () {
-                setting.header.expand.up = true;
+              up: function () {
+                _header.expand.up = true;
               },
-              down:function () {
-                setting.header.expand.up = false;
+              down: function () {
+                _header.expand.up = false;
               }
             }
           },
           //顶部左侧导航
-          _headerMenu = setting.headerMenu,
           headerMenu = $scope.headerMenu = {
             fixed: function () {
               _headerMenu.fixed = true;
@@ -145,26 +144,25 @@
             }
           },
           //菜单
-          _menu = setting.menu,
           menu = $scope.menu = {
             show: function () {
               //xs 的处理
               header.nav.to('close');
               _menu.show = true;
             },
-            toggleShow:function () {
+            toggleShow: function () {
               var t = this;
-              if(t.isShow()){
+              if (t.isShow()) {
                 t.hide();
-              }else{
+              } else {
                 t.show();
               }
             },
-            toggleFold:function () {
+            toggleFold: function () {
               var t = this;
-              if(t.isFolded()){
+              if (t.isFolded()) {
                 t.expand();
-              }else{
+              } else {
                 t.folded();
               }
             },
@@ -174,7 +172,7 @@
             isHide: function () {
               return !_menu.show;
             },
-            hide:function () {
+            hide: function () {
               header.nav.to('menu');
               _menu.show = false;
             },
@@ -182,17 +180,17 @@
               return _menu.folded;
             },
             fold: function () {
-              header.nav.to('right')
+              header.nav.to('right');
               _menu.folded = true;
             },
             folded: function () {
               this.fold();
             },
-            expand:function () {
+            expand: function () {
               header.nav.to('left');
               _menu.folded = false;
             },
-            updateNotXs:function () {
+            updateNotXs: function () {
               menu.hide();
               header.expand.down();
               if (menu.isFolded()) {
@@ -201,19 +199,25 @@
                 header.nav.to('left');
               }
             },
-            updateXs:function () {
+            updateXs: function () {
               if (menu.isShow()) {
                 header.nav.to('close');
               } else {
                 header.nav.to('menu');
               }
             },
-            mask:{
-              hide:function () {
-               menu.hide();
+            mask: {
+              hide: function () {
+                menu.hide();
               }
             }
           };
+
+      $scope.alert = function (a) {
+        alert(a);
+      };
+
+
       /**
        * 屏幕尺寸变化处理
        */
@@ -232,10 +236,28 @@
         $timeout(function () {
           resize();
           resize.isRun = false;
-        }, 800);
+        }, 400);
       });
       resize();
 
+      /**
+       * 设置的保存
+       */
+      if (angular.isDefined($localStorage.setting)) {
+        //对象的引用一定要注意 angular.extend() angular.copy() 不支持深拷贝
+        var isMatch = true,lsts = $localStorage.setting;
+        for(var i in setting){
+          lsts[i] || (isMatch = false);
+        }
+        isMatch && $.extend(true,setting,lsts);
+        isMatch || ($localStorage.setting = setting);
+      } else {
+        $localStorage.setting = setting;
+      }
+
+      $scope.$watch('setting', function () {
+        $localStorage.setting = setting;
+      }, true);
 
     }]).run(['$rootScope', '$state', '$stateParams',
     function ($rootScope, $state, $stateParams) {
@@ -254,5 +276,6 @@
           });
     }]);
 
-})(window);
+
+})(window, window.angular,jQuery,undefined);
 
