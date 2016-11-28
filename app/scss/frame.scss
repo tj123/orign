@@ -6,6 +6,7 @@
 @import "frame.color";
 @import "app.mis";
 @import "frame.header";
+@import "frame.menu";
 
 
 
@@ -63,6 +64,15 @@
   z-index: $z-index-max;
 }
 
+.content-mask{
+  position: fixed;
+  top:$header-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $mobile-mask-color;
+}
+
 .menu-show{
   .menu{
     margin-left:0;
@@ -112,6 +122,9 @@
   .header{
     position: absolute;
     left:$menu-width;
+    .navbar-right{
+      margin-right:-30px;
+    }
   }
 
   .header-menu{
@@ -139,6 +152,9 @@
 
     .header{
       left: 0;
+      //.nav-icon{
+      //  margin-left:-15px;
+      //}
     }
 
     .content{
@@ -185,6 +201,7 @@
 
 
 }
+
 
 
 @import "frame.theme.basic";

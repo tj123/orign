@@ -211,6 +211,13 @@
                 menu.hide();
               }
             }
+          },
+          content = $scope.content = {
+            mask:{
+              click:function () {
+                header.expand.down();
+              }
+            }
           };
 
       $scope.alert = function (a) {

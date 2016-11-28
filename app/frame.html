@@ -75,10 +75,10 @@
 
   </div>
 
-  <div class="menu">
+  <div class="menu" ng-include="'tpl/t3/menu.html'">
 
-    <a ui-sref="frame.dep">dep</a>
-    <a ui-sref="frame.dep2">dep2</a>
+    <!--<a ui-sref="frame.dep">dep</a>-->
+    <!--<a ui-sref="frame.dep2">dep2</a>-->
 
   </div>
 
@@ -90,5 +90,7 @@
   <div class="mobile-mask" ng-click="menu.mask.hide()">
 
   </div>
+
+  <div class="content-mask" ng-class="{'hidden':!setting.header.expand.up}" ng-click="content.mask.click()"></div>
 
 </div>

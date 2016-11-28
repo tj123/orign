@@ -17,6 +17,27 @@
 
   .menu{
     background-color: #1c2b36;
+    .divider{
+      border-color: #0000FF;
+    }
+    .menu-group{
+      color:red;
+      font-size: $font-size-smaller;
+    }
+    .menu-item{
+      &.active{
+        .menu-item-title{
+          background-color: #fff;
+        }
+        .nav{
+          background-color: #1c2b36;
+        }
+        span.font-bold{
+          background-color: #1c2b36;
+        }
+      }
+    ;
+    }
   }
 
   .menu-show{
