@@ -21,6 +21,9 @@ $z-index-middle-7:991;
 $z-index-middle-8:990;
 $z-index-bottom:0;
 
+
+$font-family-base:       "Source Sans Pro", "Microsoft YaHei UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 $font-size-base:14px;
 $font-size-smaller: ceil($font-size-base * 0.7);
-$font-size-bigger: ceil($font-size-base * 1.3)
+$font-size-bigger: ceil($font-size-base * 1.3);

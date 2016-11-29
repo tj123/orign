@@ -84,7 +84,17 @@
       }
 
       .menu-item{
+        .nav{
+          li{
+            display: block;
+            float: inherit;
+          }
+        }
+        &.active{
 
+
+
+        }
       }
 
     }

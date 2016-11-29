@@ -3,6 +3,46 @@
 @import "app.variable";
 @import "app.mixin";
 
+
+html {
+  background-color: #f0f3f4;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.42857143;
+  color: #58666e;
+  background-color: transparent;
+}
+
+*:focus {
+  outline: 0 !important;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
+}
+
+a {
+  color: #363f44;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover,
+a:focus {
+  color: #141719;
+  text-decoration: none;
+}
+
+
 .pos-rlt{position: relative;}
 .pos-stc{position: static !important;}
 .pos-abt{position: absolute;}
